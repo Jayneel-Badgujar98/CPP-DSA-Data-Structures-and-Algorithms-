@@ -1163,57 +1163,749 @@ int main()
 //     return 0;
 // }
 
+// #include <iostream>
+// #include <stack>
 
+// using namespace std;
+
+// bool isBalanced(string brackets)
+// {
+//     stack<char> st;
+//     for (char ch : brackets)
+//     {
+//         if (ch == '(' || ch == '[' || ch == '{')
+//         {
+//             st.push(ch);
+//         }
+//         else
+//         {
+//             if (st.empty()) return false;
+//             char top = st.top();
+//             if (top == '(' && ch == ')')
+//             {
+//                 st.pop();
+//             }
+//             else if (top == '[' && ch == ']')
+//             {
+//                 st.pop();
+//             }
+//             else if (top == '{' && ch == '}')
+//             {
+//                 st.pop();
+//             }
+//             else
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+//     return st.empty() ;
+// }
+// int main()
+// {
+//     string brackets = "{{{[()]}";
+//     cout << "Brackets :- " << brackets << endl;
+//     if (isBalanced(brackets))
+//     {
+//         cout << "Balanced" << endl;
+//     }
+//     else
+//     {
+//         cout << "Not Balanced" << endl;
+//     }
+//     return 0;
+// }
+
+// Design a Stack That Supports getMin() in O(1)
+// #include <iostream>
+// #include <stack>
+// using namespace std;
+
+// class minStack
+// {
+// public:
+//     stack<int> mainstack;
+//     stack<int> minstack;
+
+//     void push(int val)
+//     {
+
+//         mainstack.push(val);
+//         if (minstack.empty() || val <= minstack.top())
+//         {
+//             minstack.push(val);
+//         }
+//     }
+
+//     void pop()
+//     {
+//         if (mainstack.top() == minstack.top())
+//         {
+//             minstack.pop();
+//         }
+//         mainstack.pop();
+//     }
+//     int top()
+//     {
+//         if (!mainstack.empty())
+//         {
+//             return mainstack.top();
+//         }
+//         return -1;
+//     }
+
+//     int getMin()
+//     {
+//         return minstack.top();
+//     }
+// };
+
+// int main()
+// {
+//     minStack st;
+//     st.push(2);
+//     st.push(5);
+//     st.push(3);
+//     st.push(7);
+
+//     cout << "Min: before pop - " << st.getMin() << endl; // 3
+//     st.pop();
+//     cout << "Min: after pop - " << st.getMin() << endl; // 3
+//     st.pop();
+//     cout << "Min: after pop - " << st.getMin() << endl; // 5
+//     return 0;
+// }
+
+// Design a Stack That Supports getMax() in O(1)
+
+// #include <iostream>
+// #include <stack>
+// using namespace std;
+
+// class Stack
+// {
+// public:
+//     stack<int> mainstack;
+//     stack<int> maxstack;
+
+//     void push(int val)
+//     {
+//         mainstack.push(val);
+//         if (maxstack.empty() || val >= maxstack.top())
+//         {
+//             maxstack.push(val);
+//         }
+//     }
+
+//     void pop()
+//     {
+//         if (mainstack.top() == maxstack.top())
+//         {
+//             maxstack.pop();
+//         }
+//         mainstack.pop();
+//     }
+
+//     int top()
+//     {
+//         return mainstack.top();
+//     }
+//     int getMax()
+//     {
+//         return maxstack.top();
+//     }
+// };
+// int main()
+// {
+//     Stack st;
+//     st.push(10);
+//     st.push(20);
+//     st.push(30);
+
+//     st.push(8);
+//     st.push(100);
+//     st.push(12);
+
+//     cout << "Max: " << st.getMax() << endl;
+//     st.pop();
+//     cout << "Max: " << st.getMax() << endl;
+//     st.pop();
+//     cout << "Max: " << st.getMax() << endl;
+
+//     return 0;
+// }
+
+// // Next Greater Element
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// using namespace std;
+
+// vector<int> nextGreaterElements(vector<int> &arr)
+// {
+//     int size = arr.size() - 1;
+//     stack<int> st;
+//     vector<int> res(size-1,-1); ;
+
+//     for(int i = size ; i >= 0 ; i++){
+//         while(!st.empty() && st.top() <= arr[i]){
+//             st.pop();
+//         }
+//         if(!st.empty()){
+//             res[i] = st.top();
+//         }
+//         st.push(arr[i]);
+//     }
+//     return res ;
+// }
+// int main()
+// {
+//     vector<int> arr = {4, 5, 2, 25};
+//     vector<int> ans = nextGreaterElements(arr);
+
+//     cout << "Next Greater Elements: ";
+//     for (int val : ans)
+//     {
+//         cout << val << " ";
+//     }
+//     cout << endl;
+//     return 0;
+// }
+
+// Previous smaller element
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// using namespace std;
+
+// vector<int> previousSmaller(vector<int> &arr)
+// {
+//     int size = arr.size() ;
+//     stack<int> st;
+//     vector<int> res(size, -1);
+//     ;
+
+//     for (int i = 0; i < size ; i++)
+//     {
+//         while(!st.empty() && st.top() >= arr[i])
+//         {
+//             st.pop();
+//         }
+//         if(!st.empty()){
+//             res[i] = st.top();
+//         }
+//         st.push(arr[i]);
+//     }
+//     return res;
+// }
+// int main()
+// {
+//     vector<int> arr = {1, 5, 0, 3, 4, 5};
+//     vector<int> ans = previousSmaller(arr);
+
+//     cout << "Previous Smaller Element: ";
+//     for (int val : ans)
+//     {
+//         cout << val << " ";
+//     }
+//     cout << endl;
+//     return 0;
+// }
+
+// // Next smaller element
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// using namespace std;
+
+// vector<int> nextSmaller(vector<int> &arr)
+// {
+//     int size = arr.size() ;
+//     stack<int> st;
+//     vector<int> res(size, -1);
+
+//     for (int i = size - 1; i >=0 ; i--)
+//     {
+//         while(!st.empty() && st.top() >= arr[i])
+//         {
+//             st.pop();
+//         }
+//         if(!st.empty()){
+//             res[i] = st.top();
+//         }
+//         st.push(arr[i]);
+//     }
+//     return res;
+// }
+// int main()
+// {
+//     vector<int> arr = {4,2, 1, 5 ,3};
+//     vector<int> ans = nextSmaller(arr);
+
+//     cout << "Next Smaller Element: ";
+//     for (int val : ans)
+//     {
+//         cout << val << " ";
+//     }
+//     cout << endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// using namespace std;
+
+// vector<int> previousGreater(vector<int>& arr) {
+//     int n = arr.size();
+//     stack<int> st;
+//     vector<int> res(n, -1);
+
+//     for (int i = 0; i < n; i++) {
+//         while (!st.empty() && st.top() <= arr[i]) {
+//             st.pop();
+//         }
+//         if (!st.empty()) {
+//             res[i] = st.top();
+//         }
+//         st.push(arr[i]);
+//     }
+//     return res;
+// }
+
+// int main() {
+//     vector<int> arr = {4, 5, 2, 10, 8};
+
+//     // -1  -1  5 -1  10
+
+//     vector<int> ans = previousGreater(arr);
+
+//     cout << "Next Smaller Elements: ";
+//     for (int val : ans) {
+//         cout << val << " ";
+//     }
+//     cout << endl;
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+
+// using namespace std;
+
+// int LargestRectangleArea(vector<int> &heights)
+// {
+//     int size = heights.size();
+//     vector<int> left(size, -1);
+//     vector<int> right(size, size);
+//     stack<int> st;
+
+//     // store the index of the left smaller value
+//     for (int i = 0; i < size; i++)
+//     {
+//         while (!st.empty() && heights[st.top()] >= heights[i])
+//         {
+//             st.pop();
+//         }
+//         if (!st.empty())
+//         {
+//             left[i] = st.top();
+//         }
+//         st.push(i);
+//     }
+
+//     while (!st.empty())
+//     {
+//         st.pop();
+//     }
+//     // store the index of the right smaller value
+//     for (int i = size - 1; i >= 0; i--)
+//     {
+//         while (!st.empty() && heights[st.top()] >= heights[i])
+//         {
+//             st.pop();
+//         }
+//         if (!st.empty())
+//         {
+//             right[i] = st.top();
+//         }
+//         st.push(i);
+//     }
+
+//     int ans = 0;
+//     for (int i = 0; i < size; i++)
+//     {
+//         int width = right[i] - left[i] - 1;
+//         int area = heights[i] * width;
+//         ans = max(ans, area);
+//     }
+//     return ans;
+// }
+
+// int main()
+// {
+//     vector<int> heights = {2, 1, 5, 6, 2, 3};
+//     cout << "Largest Rectangle Area: " << LargestRectangleArea(heights) << endl;
+//     return 0;
+// }
+
+// Maximum rectangle in binary matrix
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+
+// using namespace std;
+
+// int LargestRectangleArea(vector<int> &heights)
+// {
+//     int size = heights.size();
+//     vector<int> left(size, -1);
+//     vector<int> right(size, size);
+//     stack<int> st;
+
+//     // store the index of the left smaller value
+//     for (int i = 0; i < size; i++)
+//     {
+//         while (!st.empty() && heights[st.top()] >= heights[i])
+//         {
+//             st.pop();
+//         }
+//         if (!st.empty())
+//         {
+//             left[i] = st.top();
+//         }
+//         st.push(i);
+//     }
+
+//     while (!st.empty())
+//     {
+//         st.pop();
+//     }
+//     // store the index of the right smaller value
+//     for (int i = size - 1; i >= 0; i--)
+//     {
+//         while (!st.empty() && heights[st.top()] >= heights[i])
+//         {
+//             st.pop();
+//         }
+//         if (!st.empty())
+//         {
+//             right[i] = st.top();
+//         }
+//         st.push(i);
+//     }
+
+//     int ans = 0;
+//     for (int i = 0; i < size; i++)
+//     {
+//         int width = right[i] - left[i] - 1;
+//         int area = heights[i] * width;
+//         ans = max(ans, area);
+//     }
+//     return ans;
+// }
+
+// int maximumRectangleBinaryMatrix(vector<vector<char>> &matrix)
+// {
+//     int rows = matrix.size();
+//     int cols = matrix[0].size();
+
+//     vector<int> add(cols, 0);
+//     int maxArea = 0;
+//     for (int i = 0; i < rows; i++)
+//     {
+//         for (int j = 0; j < cols; j++)
+//         {
+//             if (matrix[i][j] == '1')
+//             {
+//                 add[j] += 1;
+//             }
+//             else
+//             {
+//                 add[j] = 0;
+//             }
+//         }
+//         maxArea = max(maxArea, LargestRectangleArea(add));
+//     }
+//     return maxArea;
+// }
+
+// int main()
+// {
+//     vector<vector<char>> matrix = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+//     cout << "Largest Rectangle Area: " << maximumRectangleBinaryMatrix(matrix) << endl;
+//     return 0;
+// }
+
+// // Queue
+// #include <iostream>
+// using namespace std;
+
+// class Queue
+// {
+// public:
+//     int *arr;
+//     int size;
+//     int rear;
+//     int front;
+//     int capacity;
+
+//     Queue(int val)
+//     {
+//         arr = new int[val];
+//         front = 0;
+//         rear = -1;
+//         size = 0;
+//         capacity = val;
+//     }
+//     bool isEmpty()
+//     {
+//         return size == 0;
+//     }
+//     void enqueue(int val)
+//     {
+//         if (isFull())
+//         {
+//             cout << "Queue is full" << endl;
+//             return;
+//         }
+//         rear++;
+//         arr[rear] = val;
+//         size++;
+//     }
+//     void dequeue()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is Empty" << endl;
+//             return;
+//         }
+//         front++;
+//         size--;
+//     }
+//     int peek()
+//     {
+//         if(isEmpty()){
+//             cout<<"Queue is Empty"<<endl;
+//             return -1;
+//         }
+//         return arr[front];
+//     }
+
+//     bool isFull()
+//     {
+//         return size == capacity;
+//     }
+//     ~Queue()
+//     {
+//         delete[] arr;
+//     }
+// };
+
+// int main()
+// {
+//     Queue q(5);
+
+//     q.enqueue(10);
+//     q.enqueue(20);
+//     q.enqueue(30);
+//     cout << "Front: " << q.peek() << endl; // 10
+
+//     q.dequeue();
+//     cout << "Front after dequeue: " << q.peek() << endl; // 20
+
+//     q.enqueue(40);
+//     q.enqueue(50);
+//     q.enqueue(60);
+//     q.enqueue(70); // Should give overflow
+
+//     while (!q.isEmpty())
+//     {
+//         cout << q.peek() << " ";
+//         q.dequeue();
+//     }
+
+//     return 0;
+// }
+
+// // Circular Queue
+// #include <iostream>
+// using namespace std;
+
+// class CircularQueue
+// {
+// public:
+//     int *arr;
+//     int size;
+//     int rear;
+//     int front;
+//     int capacity;
+
+//     CircularQueue(int val)
+//     {
+//         arr = new int[val];
+//         front = 0;
+//         rear = 0;
+//         size = 0;
+//         capacity = val;
+//     }
+//     bool isEmpty()
+//     {
+//         return size == 0;
+//     }
+//     void enqueue(int val)
+//     {
+//         if (isFull())
+//         {
+//             cout << "Queue is full" << endl;
+//             return;
+//         }
+//         arr[rear] = val;
+//         rear = (rear + 1) % capacity;
+//         size++;
+//     }
+//     void dequeue()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is Empty" << endl;
+//             return;
+//         }
+//         front = (front + 1) % capacity;
+//         size--;
+//     }
+//     int peek()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is Empty" << endl;
+//             return -1;
+//         }
+//         return arr[front];
+//     }
+
+//     bool isFull()
+//     {
+//         return size == capacity  ;
+//     }
+//     ~CircularQueue()
+//     {
+//         delete[] arr;
+//     }
+// };
+// int main()
+// {
+//     CircularQueue q(5);
+
+//     q.enqueue(10);
+//     q.enqueue(20);
+//     q.enqueue(30);
+//     cout << "Peek: " << q.peek() << endl; // 10
+
+//     q.dequeue(); // remove 10
+//     q.enqueue(40);
+//     q.enqueue(50);
+//     q.enqueue(60); // Queue full now
+
+//     while (!q.isEmpty())
+//     {
+//         cout << q.peek() << " ";
+//         q.dequeue();
+//     }
+//     return 0;
+// }
+
+// Implement queue using Linked Lists
 
 #include <iostream>
-#include <stack>
-
 using namespace std;
 
-bool isBalanced(string brackets)
+class Node
 {
-    stack<char> st;
-    for (char ch : brackets)
+public:
+    int data;
+    Node *next;
+
+    Node(int val)
     {
-        if (ch == '(' || ch == '[' || ch == '{')
+        data = val;
+        next = NULL;
+    }
+};
+
+class Queue
+{
+public:
+    Node *front;
+    Node *rear;
+
+    Queue()
+    {
+        front = NULL;
+        rear = NULL;
+    }
+
+    bool isEmpty()
+    {
+        return front == NULL;
+    }
+    int peek()
+    {
+        if (front == NULL {
+                return -1;
+            })
+            return front->data;
+    }
+    void enqueue(int val)
+    {
+        Node *newNode = new Node(val);
+        if (front == NULL)
         {
-            st.push(ch);
+            front = rear = newNode;
         }
         else
         {
-            if (st.empty()) return false;
-            char top = st.top();
-            if (top == '(' && ch == ')')
-            {
-                st.pop();
-            }
-            else if (top == '[' && ch == ']')
-            {
-                st.pop();
-            }
-            else if (top == '{' && ch == '}')
-            {
-                st.pop();
-            }
-            else
-            {
-                return false;
-            }
+            rear->next = newNode;
+            rear = newNode;
         }
     }
-    return st.empty() ;
-}
+    void dequeue()
+    {
+        if (front == NULL)
+        {
+            cout << "Queue is Empty" << endl;
+            return;
+        }
+        Node *temp = front;
+        front = front->next;
+        if (front == NULL)
+        {
+            rear = NULL;
+        } // Queue became empty
+        delete temp;
+    }
+    ~Queue()
+    {
+        while (front != NULL)
+        {
+            Node *temp = front;
+            front = front->next;
+            delete temp;
+        }
+    }
+};
 int main()
 {
-    string brackets = "{{{[()]}";
-    cout << "Brackets :- " << brackets << endl;
-    if (isBalanced(brackets))
-    {
-        cout << "Balanced" << endl;
-    }
-    else
-    {
-        cout << "Not Balanced" << endl;
-    }
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    cout << "Peek: " << q.peek() << endl; // 10
+    q.dequeue();
+    cout << "Peek: " << q.peek() << endl; // 20
+
     return 0;
 }
