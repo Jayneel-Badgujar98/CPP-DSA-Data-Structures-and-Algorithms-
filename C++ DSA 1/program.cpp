@@ -1820,92 +1820,551 @@ int main()
 
 // Implement queue using Linked Lists
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Node
-{
-public:
-    int data;
-    Node *next;
+// class Node
+// {
+// public:
+//     int data;
+//     Node *next;
 
-    Node(int val)
-    {
-        data = val;
-        next = NULL;
-    }
-};
+//     Node(int val)
+//     {
+//         data = val;
+//         next = NULL;
+//     }
+// };
 
-class Queue
-{
-public:
-    Node *front;
-    Node *rear;
+// class Queue
+// {
+// public:
+//     Node *front;
+//     Node *rear;
 
-    Queue()
-    {
-        front = NULL;
-        rear = NULL;
-    }
+//     Queue()
+//     {
+//         front = NULL;
+//         rear = NULL;
+//     }
 
-    bool isEmpty()
-    {
-        return front == NULL;
-    }
-    int peek()
-    {
-        if (front == NULL {
-                return -1;
-            })
-            return front->data;
-    }
-    void enqueue(int val)
-    {
-        Node *newNode = new Node(val);
-        if (front == NULL)
-        {
-            front = rear = newNode;
-        }
-        else
-        {
-            rear->next = newNode;
-            rear = newNode;
-        }
-    }
-    void dequeue()
-    {
-        if (front == NULL)
-        {
-            cout << "Queue is Empty" << endl;
-            return;
-        }
-        Node *temp = front;
-        front = front->next;
-        if (front == NULL)
-        {
-            rear = NULL;
-        } // Queue became empty
-        delete temp;
-    }
-    ~Queue()
-    {
-        while (front != NULL)
-        {
-            Node *temp = front;
-            front = front->next;
-            delete temp;
-        }
-    }
-};
-int main()
-{
-    Queue q;
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
-    cout << "Peek: " << q.peek() << endl; // 10
-    q.dequeue();
-    cout << "Peek: " << q.peek() << endl; // 20
+//     bool isEmpty()
+//     {
+//         return front == NULL;
+//     }
+//     int peek()
+//     {
+//         if (front == NULL) {
+//                 return -1;
+//             }
+//             return front->data;
+//     }
+//     void enqueue(int val)
+//     {
+//         Node *newNode = new Node(val);
+//         if (front == NULL)
+//         {
+//             front = rear = newNode;
+//         }
+//         else
+//         {
+//             rear->next = newNode;
+//             rear = newNode;
+//         }
+//     }
+//     void dequeue()
+//     {
+//         if (front == NULL)
+//         {
+//             cout << "Queue is Empty" << endl;
+//             return;
+//         }
+//         Node *temp = front;
+//         front = front->next;
+//         if (front == NULL)
+//         {
+//             rear = NULL;
+//         } // Queue became empty
+//         delete temp;
+//     }
+//     ~Queue()
+//     {
+//         while (front != NULL)
+//         {
+//             Node *temp = front;
+//             front = front->next;
+//             delete temp;
+//         }
+//     }
+// };
+// int main()
+// {
+//     Queue q;
+//     q.enqueue(10);
+//     q.enqueue(20);
+//     q.enqueue(30);
+//     cout << "Peek: " << q.peek() << endl; // 10
+//     q.dequeue();
+//     cout << "Peek: " << q.peek() << endl; // 20
 
-    return 0;
-}
+//     return 0;
+// }
+
+// Implement Queue using 2 stacks
+
+// #include <iostream>
+// #include <stack>
+// using namespace std;
+
+// class stack {
+//     public :
+//     int top ;
+//     int *arr ;
+
+//     stack(int size)
+//     {
+//         top = -1;
+//         arr = new int[size];
+//     }
+// }
+
+// class Queue
+// {
+
+// public:
+//     stack<int> s1, s2;
+
+//     void enqueue(int val)
+//     {
+//         s1.push(val);
+//     }
+
+//     void dequeue()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is Empty" << endl;
+//             return;
+//         }
+//         if (s2.empty())
+//         {
+//             while (!s1.empty())
+//             {
+//                 s2.push(s1.top());
+//                 s1.pop();
+//             }
+//         }
+//         s2.pop();
+//     }
+
+//     bool isEmpty()
+//     {
+//         return s1.empty() && s2.empty();
+//     }
+
+//     int peek()
+//     {
+//         if (isEmpty())
+//         {
+//             return -1;
+//         }
+//         else if (s2.empty())
+//         {
+//             while (!s1.empty())
+//             {
+//                 s2.push(s1.top());
+//                 s1.pop();
+//             }
+//         }
+//         return s2.top();
+//     }
+// };
+
+// int main()
+// {
+
+//     Queue q;
+//     q.enqueue(10);
+//     q.enqueue(20);
+//     q.enqueue(30);
+//     cout << "Peek: " << q.peek() << endl; // 10
+//     q.dequeue();
+//     cout << "Peek: " << q.peek() << endl; // 20
+
+//     // Test empty cases
+//     q.dequeue();
+//     q.dequeue();
+//     q.dequeue();                          // Should print error
+//     cout << "Peek: " << q.peek() << endl; // Should print error
+
+//     return 0;
+// }
+
+// // Doubly ended queue
+
+// #include <iostream>
+// using namespace std;
+
+// class Deque
+// {
+
+// public:
+//     int front;
+//     int rear;
+//     int size;
+//     int capacity;
+//     int *arr;
+//     Deque(int cap)
+//     {
+//         front = -1;
+//         rear = -1;
+//         size = 0;
+//         capacity = cap;
+//         arr = new int[cap];
+//     }
+//     bool isEmpty()
+//     {
+//         return size == 0;
+//     }
+
+//     bool isFull()
+//     {
+//         return size == capacity;
+//     }
+//     void push_back(int val)
+//     {
+//         if (isFull())
+//         {
+//             cout << "Queue is full" << endl;
+//             return;
+//         }
+//         else if (isEmpty())
+//         {
+//             front = rear = 0;
+//             arr[rear] = val;
+//             size++;
+//             return;
+//         }
+//         rear = (rear + 1) % capacity;
+//         arr[rear] = val;
+//         size++;
+//     }
+
+//     void push_front(int val)
+//     {
+//         if (isFull())
+//         {
+//             cout << "Queue is full" << endl;
+//             return;
+//         }
+//         else if (isEmpty())
+//         {
+//             front = rear = 0;
+//             arr[front] = val;
+//             size++;
+//             return;
+//         }
+//         front = (front - 1 + capacity) % capacity;
+//         arr[front] = val;
+//         size++;
+//     }
+
+//     int pop_front()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is empty" << endl;
+//             return -1;
+//         }
+//         else if (front == rear)
+//         {
+//             int ans = arr[front];
+//             front = rear = -1;
+//             size--;
+//             return ans;
+//         }
+//         int ans = arr[front];
+//         front = (front + 1) % capacity;
+//         size--;
+//         return ans;
+//     }
+
+//     int pop_back()
+//     {
+//         if (isEmpty())
+//         {
+//             cout << "Queue is empty" << endl;
+//             return -1;
+//         }
+//         else if (front == rear)
+//         {
+//             int ans = arr[rear];
+//             front = rear = -1;
+//             size--;
+//             return ans;
+//         }
+//         int ans = arr[rear];
+//         rear = (rear - 1 + capacity) % capacity;
+//         size--;
+//         return ans;
+//     }
+//     int getFront()
+//     {
+//         if (isEmpty())
+//             return -1;
+//         return arr[front];
+//     }
+
+//     int getRear()
+//     {
+//         if (isEmpty())
+//             return -1;
+//         return arr[rear];
+//     }
+//     ~Deque()
+//     {
+//         delete[] arr;
+//     }
+// };
+// int main()
+// {
+
+//     Deque dq(5);
+//     dq.push_back(10);
+//     dq.push_back(20);
+//     dq.push_front(5);
+//     cout << "Front: " << dq.getFront() << endl; // 5
+//     cout << "Back: " << dq.getRear() << endl;   // 20
+
+//     dq.pop_back();
+//     dq.pop_front();
+//     cout << "Front: " << dq.getFront() << endl; // 10
+
+//     return 0;
+// }
+
+// Queue reversal
+
+// #include <iostream>
+// #include <queue>
+// #include <stack>
+// using namespace std;
+
+// // queue<int> reverseWithStack(queue<int> q)
+// // {
+// //     stack<int> st;
+// //     while (!q.empty())
+// //     {
+// //         st.push(q.front());
+// //         q.pop();
+// //     }
+// //     while (!st.empty())
+// //     {
+// //         q.push(st.top());
+// //         st.pop();
+// //     }
+// //     return q;
+// // }
+
+// queue<int> revserseWithRecursion(queue<int> q)
+// {
+//     if (q.empty())
+//     {
+//         return q;
+//     }
+//     int val = q.front();
+//     q.pop();
+//     q = revserseWithRecursion(q);
+//     q.push(val);
+//     return q;
+// }
+
+// int main()
+// {
+//     queue<int> que;
+//     que.push(10);
+//     que.push(20);
+//     que.push(30);
+//     que.push(40);
+//     que.push(50);
+//     queue<int> aque = que;
+//     cout << "Original queue: \n";
+//     while (!aque.empty())
+//     {
+//         cout << aque.front() << " ";
+//         aque.pop();
+//     }
+//     while (!aque.empty())
+//     {
+//         cout << aque.front() << " ";
+//         aque.pop();
+//     }
+//     // queue<int> rev = reverseWithStack(que);
+//     // cout << "\nReversed queue: \n";
+//     // while (!rev.empty())
+//     // {
+//     //     cout << rev.front() << " ";
+//     //     rev.pop();
+//     // }
+
+//     queue<int> rev = revserseWithRecursion(que);
+//     cout << "\nReversed queue: \n";
+//     while (!rev.empty())
+//     {
+//         cout << rev.front() << " ";
+//         rev.pop();
+//     }
+
+//     return 0;
+// }
+
+// first negative integer in k size window
+
+// #include <iostream>
+// #include <vector>
+// #include <deque>
+// using namespace std;
+
+// // Function to find the first negative integer in every window of size k
+// vector<int> firstNegativeInWindow(const vector<int> &arr, int k)
+// {
+//     deque<int> dq; // Stores indices of negative numbers in the current window
+//     vector<int> result;
+
+//     for (int i = 0; i < k; i++)
+//     {
+//         if (arr[i] < 0)
+//         {
+//             dq.push_back(i);
+//         }
+//     }
+
+//     if (!dq.empty())
+//     {
+//         result.push_back(arr[dq.front()]);
+//     }
+//     else
+//     {
+//         result.push_back(0);
+//     }
+
+//     for (int i = k; i < arr.size(); i++)
+//     {
+
+//         if (!dq.empty() && dq.front() <= i - k)
+//         {
+//             dq.pop_front();
+//         }
+//         if (arr[i] < 0)
+//         {
+//             dq.push_back(i);
+//         }
+
+//         if (!dq.empty())
+//         {
+//             result.push_back(arr[dq.front()]);
+//         }
+//         else
+//         {
+//             result.push_back(0);
+//         }
+//     }
+//     return result;
+// }
+
+// int main()
+// {
+//     vector<int> arr = {12, -1, -7, 8, 15, 30, 16, 28};
+//     int k = 3;
+//     vector<int> res = firstNegativeInWindow(arr, k);
+
+//     cout << "First negative integer in every window of size " << k << ":\n";
+//     for (int x : res)
+//     {
+//         cout << x << " ";
+//     }
+//     cout << endl;
+
+//     // Demonstrate where the condition is applied
+//     // At i = 4, k = 3, i - k = 1
+//     // If dq.front() <= 1, it will be removed
+//     // This ensures that only indices within the current window [2,3,4] remain
+// }
+
+
+
+// // Sum of Minimum and Maximum in Every Window of Size K
+// #include <iostream>
+// #include <vector>
+// #include <deque>
+// using namespace std;
+
+// // Function to find the first negative integer in every window of size k
+// int sumOfMinAndMaxInWindow(const vector<int> &arr, int k)
+// {
+
+//     deque<int> max;
+//     deque<int> min;
+//     int result = 0;
+
+//     //  {2, 5, -1, 7, -3, -1, -2};
+//     for (int i = 0; i < k; i++)
+//     {
+//         while (!max.empty() && arr[i] >= arr[max.back()])
+//         {
+//             max.pop_back();
+//         }
+//         while (!min.empty() && arr[i] <= arr[min.back()])
+//         {
+//             min.pop_back();
+//         }
+
+//         max.push_back(i);// 5 index 1 
+//         min.push_back(i); // -1 index 2
+//     }
+//     result += arr[max.front()] + arr[min.front()];
+
+//     for (int i = k; i < arr.size(); i++)
+//     {
+
+//         if (!max.empty() && max.front() <= i - k)
+//         {
+//             max.pop_front();
+//         }
+//         if (!min.empty() && min.front() <= i - k)
+//         {
+//             min.pop_front();
+//         }
+//         while (!max.empty() && arr[i] >= arr[max.back()])
+//         {
+//             max.pop_back();
+//         }
+//         while (!min.empty() && arr[i] <= arr[min.back()])
+//         {
+//             min.pop_back();
+//         }
+
+//         max.push_back(i);
+//         min.push_back(i);
+
+//         result += arr[max.front()] + arr[min.front()];
+//     }
+//     return result;
+// }
+
+// int main()
+// {
+//     vector<int> arr = {2, 5, -1, 7, -3, -1, -2};
+//     int k = 3;
+//     int res = sumOfMinAndMaxInWindow(arr, k);
+
+//     cout << "Sum of Minimum and Maximum in Every Window of Size " << k << " is : - " << res << endl;
+
+//     // Demonstrate where the condition is applied
+//     // At i = 4, k = 3, i - k = 1
+//     // If dq.front() <= 1, it will be removed
+//     // This ensures that only indices within the current window [2,3,4] remain
+// }
+
+
+// 
