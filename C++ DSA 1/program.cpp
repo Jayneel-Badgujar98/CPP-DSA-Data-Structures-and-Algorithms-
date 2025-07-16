@@ -2291,8 +2291,6 @@ int main()
 //     // This ensures that only indices within the current window [2,3,4] remain
 // }
 
-
-
 // // Sum of Minimum and Maximum in Every Window of Size K
 // #include <iostream>
 // #include <vector>
@@ -2319,7 +2317,7 @@ int main()
 //             min.pop_back();
 //         }
 
-//         max.push_back(i);// 5 index 1 
+//         max.push_back(i);// 5 index 1
 //         min.push_back(i); // -1 index 2
 //     }
 //     result += arr[max.front()] + arr[min.front()];
@@ -2366,5 +2364,963 @@ int main()
 //     // This ensures that only indices within the current window [2,3,4] remain
 // }
 
+// Binary Search Tree (tree)
 
-// 
+// #include <iostream>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
+
+// void inorder(Node *root)
+// {
+//     if(root == NULL)
+//     {
+//         return;
+//     }
+//     inorder(root->left);
+//     cout << root->data << " ";
+//     inorder(root->right);
+// }
+
+// void preorder(Node *root)
+// {
+//     if(root == NULL)
+//     {
+//         return;
+//     }
+//     cout << root->data << " ";
+//     preorder(root->left);
+//     preorder(root->right);
+// }
+
+// void postorder(Node *root)
+// {
+//     if(root == NULL)
+//     {
+//         return;
+//     }
+//     postorder(root->left);
+//     postorder(root->right);
+//     cout << root->data << " ";
+// }
+
+// int main()
+// {
+
+//     // Constructing the tree:
+//     //        1
+//     //       / \
+//     //      2   3
+//     //     / \
+//     //    4   5
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+
+//     cout << "Inorder: ";
+//     inorder(root); // 4 2 5 1 3
+//     cout << "\nPreorder: ";
+//     preorder(root); // 1 2 4 5 3
+//     cout << "\nPostorder: ";
+//     postorder(root); // 4 5 2 3 1
+
+//     return 0;
+// }
+
+// Binary Search Tree (Level Order Traversal)
+
+// #include <iostream>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
+
+// // BFS (breadth first search)
+
+// void levelOrderTraversal(Node *root)
+// {
+
+//     if (root == NULL)
+//     {
+//         return;
+//     }
+
+//     queue<Node *> q;
+//     q.push(root);
+//     q.push(NULL);
+
+//     while (!q.empty())
+//     {
+
+//         Node *curr = q.front();
+//         q.pop();
+//         if (curr == NULL)
+//         {
+//             cout << endl;
+//             if (!q.empty())
+//             {
+//                 q.push(NULL);
+//             }
+//         }
+//         else
+//         {
+//             cout << curr->data << "  ";
+
+//             if (curr->left)
+//             {
+//                 q.push(curr->left);
+//             }
+//             if (curr->right)
+//             {
+//                 q.push(curr->right);
+//             }
+//         }
+//     }
+// }
+
+// int main()
+// {
+//     // Constructing the tree:
+//     //       1
+//     //      / \
+//     //     2   3
+//     //    / \
+//     //   4   5
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+
+//     levelOrderTraversal(root);
+
+//     return 0;
+// }
+
+// BST - left most view - partially correct answer
+
+// #include <iostream>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
+
+// // BFS (breadth first search)
+
+// void levelOrderTraversal(Node *root)
+// {
+
+//     if (root == NULL)
+//     {
+//         return;
+//     }
+
+//     queue<Node *> q;
+//     q.push(root);
+//     q.push(NULL);
+//     cout << q.front()->data <<"  ";
+
+//     while (!q.empty())
+//     {
+
+//         Node *curr = q.front();
+//         q.pop();
+//         if (curr == NULL)
+//         {
+//             // cout << endl;
+//             if (!q.empty())
+//             {
+//                 cout << q.front()->data << "  ";
+//                 q.push(NULL);
+//             }
+//         }
+//         else
+//         {
+
+//             if (curr->left)
+//             {
+//                 q.push(curr->left);
+//             }
+//             if (curr->right)
+//             {
+//                 q.push(curr->right);
+//             }
+//         }
+//     }
+// }
+
+// int main()
+// {
+
+//     // Constructing the tree:
+//     //       1
+//     //      / \
+//     //     2   3
+//     //    / \
+//     //   4   5
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+
+//     levelOrderTraversal(root);
+
+//     return 0;
+// }
+
+// // BST - left most view - correct ans and approach
+
+// #include <iostream>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
+
+// // BFS (breadth first search)
+
+// void leftViewTree(Node *root)
+// {
+
+//     if (root == NULL)
+//     {
+//         return;
+//     }
+
+//     queue<Node *> q;
+//     q.push(root);
+
+//     // cout << q.front()->data << "  ";
+
+//     while (!q.empty())
+//     {
+
+//         int size = q.size();
+//         for (int i = 0; i < size; i++)
+//         {
+//             Node *curr = q.front();
+//             q.pop();
+//             if (i == 0)
+//             {
+//                 cout << curr->data << "  ";
+//             }
+//             if (curr->left)
+//             {
+//                 q.push(curr->left);
+//             }
+//             if (curr->right)
+//             {
+//                 q.push(curr->right);
+//             }
+//         }
+//     }
+// }
+
+// int main()
+// {
+
+//     // Constructing the tree:
+//     //       1
+//     //      / \
+//     //     2   3
+//     //    / \
+//     //   4   5
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+
+//     leftViewTree(root);
+
+//     return 0;
+// }
+
+// BST - left most view - correct ans and approach
+
+// #include <iostream>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
+
+// // BFS (breadth first search)
+
+// void rightViewTree(Node *root)
+// {
+
+//     if (root == NULL)
+//     {
+//         return;
+//     }
+
+//     queue<Node *> q;
+//     q.push(root);
+
+//     // cout << q.front()->data << "  ";
+
+//     while (!q.empty())
+//     {
+
+//         int size = q.size();
+//         for (int i = 0; i < size; i++)
+//         {
+//             Node *curr = q.front();
+//             q.pop();
+//             if (i == size - 1)
+//             {
+//                 cout << curr->data << "  ";
+//             }
+//             if (curr->left)
+//             {
+//                 q.push(curr->left);
+//             }
+//             if (curr->right)
+//             {
+//                 q.push(curr->right);
+//             }
+//         }
+//     }
+// }
+
+// int main()
+// {
+
+// //     // Constructing the tree:
+// //     //       1
+// //     //      / \
+// //     //     2   3
+// //     //    / \
+// //     //   4   5
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+
+//     rightViewTree(root);
+
+//     return 0;
+// }
+
+// Map in C++
+
+// #include <map>
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     map<int, int> myMap;
+
+//     // Insert
+//     myMap.insert({10, 20});
+//     myMap[30] = 40;
+
+//     // Find
+//     int key = 10;
+//     auto it = myMap.find(key);
+//     if (it == myMap.end()) {
+//         cout << "Key " << key << " does not exist." << endl;
+//     } else {
+//         cout << "Key " << key << " exists with value " << it->second << endl;
+//     }
+
+//     // Delete
+//     int keyToDelete = 30;
+//     int numErased = myMap.erase(keyToDelete);
+//     if (numErased == 1) {
+//         cout << "Key " << keyToDelete << " deleted." << endl;
+//     } else {
+//         cout << "Key " << keyToDelete << " not found." << endl;
+//     }
+
+//     // Print all
+//     for (auto& pair : myMap) {
+//         cout << "Key: " << pair.first << ", Value: " << pair.second << endl;
+//     }
+
+//     // Check if empty
+//     if (myMap.empty()) {
+//         cout << "Map is empty." << endl;
+//     } else {
+//         cout << "Map is not empty." << endl;
+//     }
+
+//     // Clear
+//     myMap.clear();
+
+//     return 0;
+// }
+
+// // Top view of tree
+
+// #include <iostream>
+// #include <map>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+//     ~Node()
+//     {
+//         delete left;
+//         delete right;
+//     }
+// };
+
+// void topViewTree(Node *root)
+// {
+
+//     queue<pair<Node *, int>> q;
+//     map<int, int> m;
+
+//     q.push({root , 0});
+
+//     while (!q.empty())
+//     {
+
+//         auto it = q.front();
+//         q.pop();
+
+//         Node *curr = it.first;
+//         int hd = it.second; // here hd is horizontal distance
+
+//         if (m.find(hd) == m.end())
+//         {
+//             m[hd] = curr->data;
+//         }
+
+//         if (curr->left)
+//         {
+//             q.push({curr->left, hd - 1});
+//         }
+//         if (curr->right)
+//         {
+//             q.push({curr->right, hd + 1});
+//         }
+//     }
+//     for (auto it : m)
+//     {
+//         cout << it.second  << " ";
+//     }
+// }
+// int main()
+// {
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+//     root->right->right = new Node(6);
+//     root->left->right->right = new Node(7);
+
+//     // Print the tree structure (for verification)
+//     // cout << "Tree Structure:" << endl;
+//     // cout << "        " << root->data << endl;
+//     // cout << "      /   \\" << endl;
+//     // cout << "     " << root->left->data << "     " << root->right->data << endl;
+//     // cout << "    / \\     \\" << endl;
+//     // cout << "   " << root->left->left->data << "   " << root->left->right->data << "     " << root->right->right->data << endl;
+//     // cout << "        \\" << endl;
+//     // cout << "         " << root->left->right->right->data << endl;
+
+//     topViewTree(root);
+
+//     return 0;
+// }
+
+// // Bottom view of tree
+
+// #include <iostream>
+// #include <map>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+//     ~Node()
+//     {
+//         delete left;
+//         delete right;
+//     }
+// };
+
+// void topViewTree(Node *root)
+// {
+
+//     queue<pair<Node *, int>> q;
+//     map<int, int> m;
+
+//     q.push({root, 0});
+
+//     while (!q.empty())
+//     {
+
+//         auto it = q.front();
+//         q.pop();
+
+//         Node *curr = it.first;
+//         int hd = it.second; // here hd is horizontal distance
+
+//         m[hd] = curr->data;
+
+//         if (curr->left)
+//         {
+//             q.push({curr->left, hd - 1});
+//         }
+//         if (curr->right)
+//         {
+//             q.push({curr->right, hd + 1});
+//         }
+//     }
+//     for (auto it : m)
+//     {
+//         cout << it.second << " ";
+//     }
+// }
+// int main()
+// {
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+//     root->right->right = new Node(6);
+//     root->left->right->right = new Node(7);
+
+//     // Print the tree structure (for verification)
+//     // cout << "Tree Structure:" << endl;
+//     // cout << "        " << root->data << endl;
+//     // cout << "      /   \\" << endl;
+//     // cout << "     " << root->left->data << "     " << root->right->data << endl;
+//     // cout << "    / \\     \\" << endl;
+//     // cout << "   " << root->left->left->data << "   " << root->left->right->data << "     " << root->right->right->data << endl;
+//     // cout << "        \\" << endl;
+//     // cout << "         " << root->left->right->right->data << endl;
+
+//     topViewTree(root);
+
+//     return 0;
+// }
+
+// // Longest Height of the tree
+
+// #include <iostream>
+// #include <map>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+//     ~Node()
+//     {
+//         delete left;
+//         delete right;
+//     }
+// };
+
+// // void topViewTree(Node *root)
+// // {
+
+// //     queue<pair<Node *, int>> q;
+// //     map<int, int> m;
+
+// //     q.push({root, 0});
+
+// //     while (!q.empty())
+// //     {
+
+// //         auto it = q.front();
+// //         q.pop();
+
+// //         Node *curr = it.first;
+// //         int hd = it.second; // here hd is horizontal distance
+
+// //         m[hd] = curr->data;
+
+// //         if (curr->left)
+// //         {
+// //             q.push({curr->left, hd - 1});
+// //         }
+// //         if (curr->right)
+// //         {
+// //             q.push({curr->right, hd + 1});
+// //         }
+// //     }
+// //     for (auto it : m)
+// //     {
+// //         cout << it.second << " ";
+// //     }
+// // }
+
+// int longestheight(Node *root)
+// {
+//     if (!root)
+//     {
+//         return 0;
+//     }
+//     int left = longestheight(root->left);
+//     int right = longestheight(root->right);
+
+//     return 1 + max(left, right);
+// }
+// int main()
+// {
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+//     root->right->right = new Node(6);
+//     root->left->right->right = new Node(7);
+
+//     // Print the tree structure (for verification)
+//     // cout << "Tree Structure:" << endl;
+//     // cout << "        " << root->data << endl;
+//     // cout << "      /   \\" << endl;
+//     // cout << "     " << root->left->data << "     " << root->right->data << endl;
+//     // cout << "    / \\     \\" << endl;
+//     // cout << "   " << root->left->left->data << "   " << root->left->right->data << "     " << root->right->right->data << endl;
+//     // cout << "        \\" << endl;
+//     // cout << "         " << root->left->right->right->data << endl;
+
+//     int height = longestheight(root);
+//     cout << "Height of the tree: " << height << endl;
+//     return 0;
+// }
+
+// // Total nodes in the tree
+// check if tree is balanced
+
+// #include <iostream>
+// #include <map>
+// #include <queue>
+
+// using namespace std;
+
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+//     ~Node()
+//     {
+//         delete left;
+//         delete right;
+//     }
+// };
+
+// int countTotalNodes(Node *root)
+// {
+//     if (!root)
+//     {
+//         return 0;
+//     }
+//     // int left = countTotalNodes(root->left);
+//     // int right = countTotalNodes(root->right);
+//     // // return 1 + right + left ;
+//     // return 1 + countTotalNodes(root->left) + countTotalNodes(root->right); // this will also work
+
+//     // return 1 + countTotalNodes(root->left) + countTotalNodes(root->right); // will to work
+
+//     int left = countTotalNodes(root->left);
+//     int right = countTotalNodes(root->right);
+//     // return 1 + right + left ;
+//     return 1 + left + right;
+// }
+
+// // bool isTree_Balanced(Node *root)
+// // { //wrong does not check for the innerr sub tress checks only the outer left and right trees
+// //     if (!root)
+// //     {
+// //         return false;
+// //     }
+
+// //     int left_height = longestheight(root->left); // O(n)
+// //     int right_height = longestheight(root->right);// O(n)
+// //     //  so O(n) X O(n) = O(n^2)
+
+// //     if (abs(left_height - right_height) > 1)
+// //     {
+// //         return false;
+// //     }
+// //     return true;
+// // }
+
+// int longestheight(Node *root)
+// {
+//     if (!root)
+//     {
+//         return 0;
+//     }
+//     int left = longestheight(root->left);
+//     int right = longestheight(root->right);
+
+//     return 1 + max(left, right);
+// }
+// // bool isBalanced(Node *root)
+// // {
+// //     // Time Complexity: O(n^2) which is not good
+// //     if (!root)
+// //     {
+// //         return true;
+// //     }
+// //     int left_height = longestheight(root->left);   // O(size of left subtree)
+// //     int right_height = longestheight(root->right); // O(size of right subtree)
+// //     if (abs(left_height - right_height) > 1)
+// //     {
+// //         return false;
+// //     }
+// //     // Recursively check ALL subtrees: this is what causes O(n²)
+// //     return isBalanced(root->left) && isBalanced(root->right);
+// // }
+
+// int checkHeight(Node* root) {
+//     if (!root) return 0;
+//     int left = checkHeight(root->left);
+//     if (left == -1) return -1;
+//     int right = checkHeight(root->right);
+//     if (right == -1) return -1;
+//     if (abs(left - right) > 1) return -1;
+//     return 1 + max(left, right);
+// }
+
+// bool isBalanced(Node* root) {
+//     return checkHeight(root) != -1;
+// }
+
+// int main()
+// {
+
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+//     root->right->right = new Node(6);
+//     root->left->right->right = new Node(7);
+
+//     // Print the tree structure (for verification)
+//     // cout << "Tree Structure:" << endl;
+//     // cout << "        " << root->data << endl;
+//     // cout << "      /   \\" << endl;
+//     // cout << "     " << root->left->data << "     " << root->right->data << endl;
+//     // cout << "    / \\     \\" << endl;
+//     // cout << "   " << root->left->left->data << "   " << root->left->right->data << "     " << root->right->right->data << endl;
+//     // cout << "        \\" << endl;
+//     // cout << "         " << root->left->right->right->data << endl;
+
+//     int height = longestheight(root);
+//     cout << "Height of the tree: " << height << endl;
+//     int totalNodes = countTotalNodes(root);
+//     cout << "Total nodes in the tree: " << totalNodes << endl;
+//     // bool is_balanced = isTree_Balanced(root);
+//     bool is_balanced = isBalanced(root);
+//     if (is_balanced)
+//     {
+//         cout << "Tree is balanced" << endl;
+//     }
+//     else
+//     {
+//         cout << "Tree is not balanced" << endl;
+//     }
+
+//     return 0;
+// }
+
+#include <iostream>
+#include <map>
+#include <queue>
+
+using namespace std;
+
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val)
+    {
+        data = val;
+        left = NULL;
+        right = NULL;
+    }
+    ~Node()
+    {
+        delete left;
+        delete right;
+    }
+};
+int height(Node *root, int &diameter)
+{
+    if (!root)
+    {
+        return 0;
+    }
+
+    int lh = height(root->left, diameter);
+    int rh = height(root->right, diameter);
+
+    diameter = max(diameter, lh + rh);
+
+    return 1 + max(lh, rh);
+}
+int diametere(Node *root)
+{
+    // Your code here
+    int diameter = 0;
+    height(root, diameter);
+    return diameter;
+}
+
+int main()
+{
+
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->right = new Node(6);
+    root->left->right->right = new Node(7);
+
+    // Print the tree structure (for verification)
+    // cout << "Tree Structure:" << endl;
+    // cout << "        " << root->data << endl;
+    // cout << "      /   \\" << endl;
+    // cout << "     " << root->left->data << "     " << root->right->data << endl;
+    // cout << "    / \\     \\" << endl;
+    // cout << "   " << root->left->left->data << "   " << root->left->right->data << "     " << root->right->right->data << endl;
+    // cout << "        \\" << endl;
+    // cout << "         " << root->left->right->right->data << endl;
+
+    int diameter = diametere(root);
+    cout << "Diameter of the tree: " << diameter << endl;
+
+    return 0;
+}
