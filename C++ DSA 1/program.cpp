@@ -2443,90 +2443,90 @@ int main()
 //     return 0;
 // }
 
-// Binary Tree (Level Order Traversal)
+// // Binary Tree (Level Order Traversal)
 
-#include <iostream>
-#include <queue>
+// #include <iostream>
+// #include <queue>
 
-using namespace std;
+// using namespace std;
 
-class Node
-{
-public:
-    int data;
-    Node *left;
-    Node *right;
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
 
-    Node(int val)
-    {
-        data = val;
-        left = NULL;
-        right = NULL;
-    }
-};
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+// };
 
-// BFS (breadth first search)
+// // BFS (breadth first search)
 
-void levelOrderTraversal(Node *root)
-{
+// void levelOrderTraversal(Node *root)
+// {
 
-    if (root == NULL)
-    {
-        return;
-    }
+//     if (root == NULL)
+//     {
+//         return;
+//     }
 
-    queue<Node *> q;
-    q.push(root);
-    q.push(NULL);
+//     queue<Node *> q;
+//     q.push(root);
+//     q.push(NULL);
 
-    while (!q.empty())
-    {
+//     while (!q.empty())
+//     {
 
-        Node *curr = q.front();
-        q.pop();
-        if (curr == NULL)
-        {
-            cout << endl;
-            if (!q.empty())
-            {
-                q.push(NULL);
-            }
-        }
-        else
-        {
-            cout << curr->data << "  ";
+//         Node *curr = q.front();
+//         q.pop();
+//         if (curr == NULL)
+//         {
+//             cout << endl;
+//             if (!q.empty())
+//             {
+//                 q.push(NULL);
+//             }
+//         }
+//         else
+//         {
+//             cout << curr->data << "  ";
 
-            if (curr->left)
-            {
-                q.push(curr->left);
-            }
-            if (curr->right)
-            {
-                q.push(curr->right);
-            }
-        }
-    }
-}
+//             if (curr->left)
+//             {
+//                 q.push(curr->left);
+//             }
+//             if (curr->right)
+//             {
+//                 q.push(curr->right);
+//             }
+//         }
+//     }
+// }
 
-int main()
-{
-    // Constructing the tree:
-    //       1
-    //      / \
-    //     2   3
-    //    / \
-    //   4   5
+// int main()
+// {
+//     // Constructing the tree:
+//     //       1
+//     //      / \
+//     //     2   3
+//     //    / \
+//     //   4   5
 
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
 
-    levelOrderTraversal(root);
+//     levelOrderTraversal(root);
 
-    return 0;
-}
+//     return 0;
+// }
 
 // BST - left most view - partially correct answer
 
@@ -4141,7 +4141,7 @@ int main()
 //             return -1;
 //         }
 //         return heap[0];
-        
+
 //     }
 //     void print()
 //     {
@@ -4224,7 +4224,6 @@ int main()
 //     cout<<"Heap after Sort :- "<<endl ;
 //     // heap.heapSort();
 //     heap.print();
-
 
 //     // Demonstrate extraction until heap is empty
 //     cout << "Extracting all elements: ";
@@ -4321,7 +4320,7 @@ int main()
 // //             throw runtime_error("Heap is empty!");
 // //         }
 // //         return heap[0];
-        
+
 // //     }
 // //     void print()
 // //     {
@@ -4329,7 +4328,7 @@ int main()
 // //             cout << val << " ";
 // //         cout << endl;
 // //     }
-    
+
 // // };
 
 // // int main()
@@ -4374,4 +4373,1102 @@ int main()
 
 // //     return 0;
 // // }
+
+// #include <iostream>
+// #include <unordered_map>
+// #include <map>
+
+// using namespace std;
+
+// void countFrequency(int arr[], int n)
+// {
+//     unordered_map<int, int> freq;
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         freq[arr[i]]++;
+//         // cout << arr[i] << " -> " << freq[arr[i]] << " times" << endl;
+//     }
+
+//     for (auto pair : freq)
+//     {
+//         cout << pair.first << " -> " << pair.second << endl;
+//     }
+// }
+
+// int countFrequency2(int arr[], int n)
+// {
+//     unordered_map<int, int> freq;
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         freq[arr[i]]++;
+//         // cout << arr[i] << " -> " << freq[arr[i]] << " times" << endl;
+//     }
+
+//      for (int i = 0; i < n; i++) {
+//         if (freq[arr[i]] == 1) {
+//             return arr[i];
+//         }
+//     }
+
+//     return -1; // If no non-repeating element found
+// }
+
+// int main()
+// {
+//     int arr[] = {1, 1, 2, 2, 4, 3, 8};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+
+//     countFrequency(arr, n);
+//     int first_non_repeating = countFrequency2(arr, n);
+//     cout << first_non_repeating;
+
+//     return 0;
+// }
+
+// // Trie
+// #include <iostream>
+// using namespace std;
+
+// class TrieNode
+// {
+
+// public:
+//     TrieNode *children[26];
+//     bool isEnd;
+
+//     TrieNode()
+//     {
+//         for (int i = 0; i < 26; i++)
+//         {
+//             children[i] = NULL;
+//         }
+//         isEnd = false;
+//     }
+// };
+
+// class Trie
+// {
+
+// private:
+//     TrieNode *root;
+
+//     // Helper for deletion
+//     // bool deleteHelper(TrieNode *node, string word, int depth)
+//     // {
+//     //     if (!node)
+//     //         return false;
+
+//     //     if (depth == word.size())
+//     //     {
+//     //         // Last character of the word
+//     //         if (!node->isEnd)
+//     //             return false; // word not found
+
+//     //         node->isEnd = false; // unmark the end
+
+//     //         // If this node has no children, it can be deleted
+//     //         for (int i = 0; i < 26; i++)
+//     //         {
+//     //             if (node->children[i])
+//     //                 return false; // can't delete this node
+//     //         }
+
+//     //         return true; // can delete this node
+//     //     }
+
+//     //     int index = word[depth] - 'a';
+//     //     if (deleteHelper(node->children[index], word, depth + 1))
+//     //     {
+//     //         // Delete the child node
+//     //         delete node->children[index];
+//     //         node->children[index] = NULL;
+
+//     //         // Check if current node can be deleted
+//     //         if (!node->isEnd)
+//     //         {
+//     //             for (int i = 0; i < 26; i++)
+//     //             {
+//     //                 if (node->children[i])
+//     //                     return false;
+//     //             }
+//     //             return true;
+//     //         }
+//     //     }
+
+//     //     return false;
+//     // }
+
+//     bool deleteHelper(TrieNode *root, string word, int depth)
+//     {
+//         if (!root)
+//         {
+//             return false;
+//         }
+//         if (depth = word.size())
+//         {
+//             if (!root->isEnd)
+//             {
+//                 return false;
+//             }
+//             root->isEnd = false;
+
+//             for (int i = 0; i < 26; i++)
+//             {
+//                 if (root->children[i])
+//                 {
+//                     return false;
+//                 }
+//             }
+//             return true; // can delete this node
+//         }
+//     //     root
+//     //      |
+//     //      c
+//     //      |
+//     //      a
+//     //    /   \
+//     //   t     r -  i - l
+//     //         |
+//     //         e
+
+//         int index = word[depth] - 'a';
+//         if (deleteHelper(root->children[index], word, depth + 1))
+//         {
+//             delete root->children[index];
+//             root->children[index] = NULL;
+
+//             // Check if current node can be deleted
+//             if (!root->isEnd)
+//             {
+//                 for (int i = 0; i < 26; i++)
+//                 {
+//                     if (root->children[i])
+//                         return false;
+//                 }
+//                 return true;
+//             }
+//         }
+
+//         return false;
+//     }
+
+// public:
+//     Trie()
+//     {
+//         root = new TrieNode();
+//     }
+
+//     void insert(string word)
+//     {
+//         TrieNode *curr = root;
+
+//         for (char ch : word)
+//         {
+//             int index = ch - 'a'; // 'a' → 0, 'b' → 1, ..., 'z' → 25
+
+//             if (curr->children[index] == NULL)
+//             {
+//                 curr->children[index] = new TrieNode();
+//             }
+//             curr = curr->children[index];
+//         }
+
+//         curr->isEnd = true; // Mark end of word
+//     }
+
+//     // Search for a complete word
+//     bool search(string word)
+//     {
+//         TrieNode *curr = root;
+
+//         for (char ch : word)
+//         {
+//             int index = ch - 'a';
+
+//             if (curr->children[index] == NULL)
+//                 return false;
+
+//             curr = curr->children[index];
+//         }
+//         return curr->isEnd;
+//     }
+
+//     bool startsWith(string prefix)
+//     {
+//         TrieNode *curr = root;
+//         for (char ch : prefix)
+//         {
+//             int index = ch - 'a';
+//             if (curr->children[index] == NULL)
+//             {
+//                 return false;
+//             }
+//             curr = curr->children[index];
+//         }
+//         return true;
+//     }
+
+//     void deleteWord(string word)
+//     {
+//         deleteHelper(root, word, 0);
+//     }
+// };
+
+// int main()
+// {
+//     Trie trie;
+
+//     trie.insert("apple");
+//     trie.insert("app");
+
+//     cout << trie.search("apple") << endl; // 1 (true)
+//     cout << trie.search("app") << endl;   // 1 (true)
+//     cout << trie.search("ap") << endl
+//          << endl; // 0 (false - not full word)
+
+//     cout << trie.startsWith("app") << endl;    // 1 (true)
+//     cout << trie.startsWith("appl") << endl;   // 1 (true)
+//     cout << trie.startsWith("banana") << endl; // 0 (false)
+
+//     return 0;
+// }
+
+// // Graph
+
+// #include <iostream>
+// #include <vector>
+// #include <map>
+// #include <unordered_map>
+// #include <list>
+
+// using namespace std;
+
+// class Graph
+// {
+// private:
+//     unordered_map<int, list<int>> adList;
+
+// public:
+//     void addEdge(int u, int v, bool bidirectional = true)
+//     {
+//         adList[u].push_back(v);
+//         if (bidirectional)
+//         {
+//             adList[v].push_back(u);
+//         }
+//     }
+
+//     void printGraph()
+//     {
+//         for (auto i : adList)
+//         {
+//             cout << i.first << " -> ";
+//             for (auto j : i.second)
+//             {
+//                 cout << j << " ";
+//             }
+//             cout << endl;
+//         }
+//     }
+// };
+// int main()
+// {
+//     // cout << "Graph Implementation" << endl;
+//     // // Graph can be implemented using adjacency list or adjacency matrix
+//     // // Here we will use adjacency list for simplicity
+
+//     // // Example: Graph with 5 vertices (0 to 4)
+//     // int V = 5;                  // Number of vertices
+//     // vector<vector<int>> adj(V); // Adjacency list
+
+//     // // Adding edges
+//     // adj[0].push_back(1);
+//     // adj[0].push_back(4);
+//     // adj[1].push_back(0);
+//     // adj[1].push_back(2);
+//     // adj[1].push_back(3);
+//     // adj[2].push_back(1);
+//     // adj[3].push_back(1);
+//     // adj[3].push_back(4);
+//     // adj[4].push_back(0);
+//     // adj[4].push_back(3);
+
+//     // // Displaying the graph
+//     // for (int i = 0; i < V; i++)
+//     // {
+//     //     cout << "Vertex " << i << ": ";
+//     //     for (int j : adj[i])
+//     //     {
+//     //         cout << j << " ";
+//     //     }
+//     //     cout << endl;
+//     // }
+//     // int a, b;
+
+//     // cin >> a >> b;
+//     // cout<<a<<" "<<b<<endl;
+
+//     // int n, m;
+//     // cin >> n >> m;
+
+//     // vector<vector<int>> adj(n);
+
+//     // for (int i = 0; i < m; i++)
+//     // {
+//     //     int u, v;
+//     //     cin >> u >> v;
+
+//     //     // Undirected graph
+//     //     adj[u].push_back(v);
+//     //     adj[v].push_back(u);
+//     // }
+//     Graph graph;
+//     cout << "Graph Implementation using Adjacency List" << endl;
+//     int n, m;
+//     cout << "Enter number of nodes / vertices : ";
+//     cin >> n;
+//     cout << "Enter number of edges : ";
+//     cin >> m;
+//     for (int i = 0; i < m; i++)
+//     {
+//         int u, v;
+
+//         cout << "Enter edge " << i + 1 << " : ";
+//         cin >> u >> v;
+//         graph.addEdge(u,v);
+//     }
+
+//     cout << "Graph Adjacency List:" << endl;
+//     graph.printGraph();
+
+//     return 0;
+// }
+
+// // Graph - template for knowing data type by only once
+
+// #include <iostream>
+// #include <vector>
+// #include <map>
+// #include <unordered_map>
+// #include <list>
+// using namespace std;
+
+// template <typename T>
+
+// class Graph
+// {
+// private:
+//     unordered_map<T, list<T>> adList;
+
+// public:
+//     void addEdge(T u, T v, bool bidirectional = true)
+//     {
+//         adList[u].push_back(v);
+//         if (bidirectional)
+//         {
+//             adList[v].push_back(u);
+//         }
+//     }
+
+//     void printGraph()
+//     {
+//         for (auto i : adList)
+//         {
+//             cout << i.first << " -> ";
+//             for (auto j : i.second)
+//             {
+//                 cout << j << " ";
+//             }
+//             cout << endl;
+//         }
+//     }
+// };
+// int main()
+// {
+//     // cout << "Graph Implementation" << endl;
+//     // // Graph can be implemented using adjacency list or adjacency matrix
+//     // // Here we will use adjacency list for simplicity
+
+//     // // Example: Graph with 5 vertices (0 to 4)
+//     // int V = 5;                  // Number of vertices
+//     // vector<vector<int>> adj(V); // Adjacency list
+
+//     // // Adding edges
+//     // adj[0].push_back(1);
+//     // adj[0].push_back(4);
+//     // adj[1].push_back(0);
+//     // adj[1].push_back(2);
+//     // adj[1].push_back(3);
+//     // adj[2].push_back(1);
+//     // adj[3].push_back(1);
+//     // adj[3].push_back(4);
+//     // adj[4].push_back(0);
+//     // adj[4].push_back(3);
+
+//     // // Displaying the graph
+//     // for (int i = 0; i < V; i++)
+//     // {
+//     //     cout << "Vertex " << i << ": ";
+//     //     for (int j : adj[i])
+//     //     {
+//     //         cout << j << " ";
+//     //     }
+//     //     cout << endl;
+//     // }
+//     // int a, b;
+
+//     // cin >> a >> b;
+//     // cout<<a<<" "<<b<<endl;
+
+//     // int n, m;
+//     // cin >> n >> m;
+
+//     // vector<vector<int>> adj(n);
+
+//     // for (int i = 0; i < m; i++)
+//     // {
+//     //     int u, v;
+//     //     cin >> u >> v;
+
+//     //     // Undirected graph
+//     //     adj[u].push_back(v);
+//     //     adj[v].push_back(u);
+//     // }
+//     Graph<int> graph;
+//     cout << "Graph Implementation using Adjacency List" << endl;
+//     int n, m;
+//     cout << "Enter number of nodes / vertices : ";
+//     cin >> n;
+//     cout << "Enter number of edges : ";
+//     cin >> m;
+//     for (int i = 0; i < m; i++)
+//     {
+//         int u, v;
+
+//         cout << "Enter edge " << i + 1 << " : ";
+//         cin >> u >> v;
+//         graph.addEdge(u,v);
+//     }
+
+//     cout << "Graph Adjacency List:" << endl;
+//     graph.printGraph();
+
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include<pair>
+
+// using namespace std;
+
+// class Solution
+// {
+// public:
+//     bool isCycle(int V, vector<vector<int>> &edges)
+//     {
+//         // Step 1: Build adjacency list from the edge list
+//         vector<vector<int>> adjList(V);
+//         for (auto &edge : edges)
+//         {
+//             int u = edge[0];
+//             int v = edge[1];
+//             adjList[u].push_back(v);
+//             adjList[v].push_back(u);
+//         }
+
+//         vector<bool> visited(V, false);
+
+//         // Step 2: Check all components using BFS
+//         for (int start = 0; start < V; ++start)
+//         {
+//             if (!visited[start])
+//             {
+//                 if (bfsCycleDetect(adjList, visited, start))
+//                 {
+//                     return true; // Cycle detected
+//                 }
+//             }
+//         }
+
+//         return false; // No cycle detected in any component
+//     }
+
+// private:
+//     bool bfsCycleDetect(const vector<vector<int>> &adj, vector<bool> &visited, int start)
+//     {
+//         // Queue stores pairs of (current_vertex, parent_vertex)
+//         queue<pair<int, int>> q;
+//         visited[start] = true;
+//         q.push({start, -1}); // Start node has no parent
+
+//       while(!q.empty()){
+//         int vertex = q.front().first;
+//         int parent = q.front().first ;
+//         q.pop();
+
+
+//         if(!visited[vertex]){
+//             visited[vertex] = true;
+//             q.push({vertex, parent});
+//         }
+//         else if(vertex != parent){
+//             return true;
+//         }
+        
+//       }
+//       return false ;
+//     }
+
+//     return false; // No cycle found in this component
+// }
+// }
+// ;
+
+// int main()
+// {
+// }
+// #include<iostream>
+// #include<vector>
+
+// class Solution {
+// public:
+//     bool isCyclic(int V, vector<vector<int>>& edges) {
+//         vector<vector<int>> adj(V);
+
+//         // Directed Graph → only one direction
+//         for (auto edge : edges) {
+//             int u = edge[0];
+//             int v = edge[1];
+//             adj[u].push_back(v);
+//         }
+
+//         vector<bool> visited(V, false);
+//         vector<bool> recStack(V, false);
+
+//         // For disconnected components
+//         for (int i = 0; i < V; i++) {
+//             if (!visited[i]) {
+//                 if (dfsCycleDirected(adj, visited, recStack, i))
+//                     return true;
+//             }
+//         }
+
+//         return false;
+//     }
+
+//     bool dfsCycleDirected(vector<vector<int>>& adj, vector<bool>& visited,
+//                           vector<bool>& recStack, int node) {
+//         visited[node] = true;
+//         recStack[node] = true;
+
+//         for (int neighbour : adj[node]) {
+//             if (!visited[neighbour]) {
+//                 if (dfsCycleDirected(adj, visited, recStack, neighbour))
+//                     return true;
+//             }
+//             else if (recStack[neighbour]) {
+//                 // If node is in recursion stack → cycle
+//                 return true;
+//             }
+//         }
+
+//         recStack[node] = false; // remove from recursion stack
+//         return false;
+//     }
+// };
+
+// int main(){
+
+//     return 0 ;
+// }
+
+
+// // set in C++ 
+
+// #include <iostream>
+// #include <set>
+// using namespace std;
+
+// int main() {
+//     set<int> numbers = {4, 2, 5, 1, 2, 3, 4};
+//     numbers.insert(6);       // adds 6
+//     numbers.insert(2);       // ignored (already present)
+
+//     cout << "Set contains: ";
+//     for (int num : numbers)
+//         cout << num << " ";
+//     cout << endl;
+
+//     // Search
+//     int target = 3;
+//     if (numbers.find(target) != numbers.end())
+//         cout << target << " is present\n";
+//     else
+//         cout << target << " not found\n";
+
+//     // Remove
+//     numbers.erase(4);
+
+//     cout << "After erasing 4: ";
+//     for (int num : numbers)
+//         cout << num << " ";
+//     cout << endl;
+
+//     set<pair<int,int>> s;
+//     s.insert({5,7});
+//     s.insert({2,8});
+//     s.insert({5,7}); // duplicate ignored
+
+//     for (auto &p : s) {
+//         cout << "(" << p.first << ", " << p.second << ")\n";
+//     }
+//     // Output is sorted by .first, then .second
+
+
+//     return 0;
+// }
+// // Output:
+// // }
+// // Set contains: 1 2 3 4 5 6 
+// // 3 is present
+// // After erasing 4: 1 2 3 5 6 
+// // (2, 8)
+// // (5, 7)
+
+
+// #include<iostream> 
+
+// using namespace std ;
+
+// int main(){
+// int n ;
+//     cin>>n ;
+//      int arr[n];
+//      arr[0] = 8 ;
+//      cout<<*(arr)<<endl ;
+  
+//     return 0 ;
+// }
+
+// // To find the total number of strongly connected components in the directed graph 
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// class Solution {
+//   public:
+//     void TopologicalSort(int node, vector<int> adj[], vector<bool> &visited, stack<int> &st) {
+//         visited[node] = true;
+//         for (auto neigh : adj[node]) {
+//             if (!visited[neigh]) {
+//                 TopologicalSort(neigh, adj, visited, st);
+//             }
+//         }
+//         st.push(node); // push after all descendants processed
+//     }
+
+//     void dfs(int node, vector<int> transpose[], vector<bool> &visited) {
+//         visited[node] = true;
+//         for (auto neigh : transpose[node]) {
+//             if (!visited[neigh]) {
+//                 dfs(neigh, transpose, visited);
+//             }
+//         }
+//     }
+
+//     int kosaraju(int V, vector<int> adj[]) {
+//         vector<bool> visited(V, false);
+//         stack<int> st;
+
+//         // Step 1: DFS on original graph to fill stack by finish time
+//         for (int i = 0; i < V; i++) {
+//             if (!visited[i]) {
+//                 TopologicalSort(i, adj, visited, st);
+//             }
+//         }
+
+//         // Step 2: Create transpose graph
+//         vector<int> transpose[V];
+//         for (int i = 0; i < V; i++) {
+//             for (auto neigh : adj[i]) {
+//                 transpose[neigh].push_back(i);
+//             }
+//         }
+
+//         // Step 3: DFS on transpose graph in order of stack
+//         fill(visited.begin(), visited.end(), false);
+//         int sccCount = 0;
+//         while (!st.empty()) {
+//             int node = st.top();
+//             st.pop();
+//             if (!visited[node]) {
+//                 dfs(node, transpose, visited);
+//                 sccCount++;
+//             }
+//         }
+
+//         return sccCount;
+//     }
+// };
+
+// int main() {
+//     int V = 5;
+//     vector<int> adj[V];
+
+//     // Example graph edges
+//     adj[0].push_back(2);
+//     adj[2].push_back(1);
+//     adj[1].push_back(0);
+//     adj[0].push_back(3);
+//     adj[3].push_back(4);
+
+//     Solution sol;
+//     cout << "Number of strongly connected components: " << sol.kosaraju(V, adj) << "\n";
+//     return 0;
+// }
+
+
+// // Dynamic Programming - DP here used recursion with memoization  from top to bottom
+
+// #include<iostream>
+// #include<vector>
+
+// using namespace std ;
+
+// class Solution {
+//     vector<int> DP;
+// public:
+//     Solution(int n) {
+//         DP.resize(n + 1, -1);
+//     }
+
+//     int nthFibonacci(int n) {
+//         if (n == 0 || n == 1)
+//             return n;
+//         if (DP[n] != -1)
+//             return DP[n];
+//         DP[n] = nthFibonacci(n - 1) + nthFibonacci(n - 2);
+//         return DP[n];
+//     }
+// };
+
+// // usage
+// int main() {
+//     int n = 10;
+//     Solution sol(n);
+//     cout << sol.nthFibonacci(n) << endl;
+// }
+
+
+// // Dynamic Programming - DP here used recursion with memoization from bottom to up (Tabulation)
+
+// #include <iostream>
+// #include <vector>
+
+// using namespace std;
+
+// class Solution {
+//     vector<int> DP;
+
+// public:
+//     Solution(int n) {
+//         DP.resize(n + 1, 0);
+//     }
+
+//     int nthFibonacci(int n) {
+//         if (n == 0 || n == 1)
+//             return n;
+
+//         DP[0] = 0;
+//         DP[1] = 1;
+
+//         for (int i = 2; i <= n; i++) {
+//             DP[i] = DP[i - 1] + DP[i - 2];
+//         }
+
+//         return DP[n];
+//     }
+// };
+
+// int main() {
+//     int n = 10;
+//     Solution sol(n);
+//     cout << sol.nthFibonacci(n) << endl;  // Output: 55
+//     return 0;
+// }
+
+// #include<iostream>
+
+// using namespace std ;
+
+// int main(){
+
+//     int a = 4 , b = 3 ;
+//     cout<<"Before the swapping a - "<<a<<" and b - "<<b<<endl ;
+   
+//     // Not works well 
+//     //  b = a + b - b;
+//     //  a = b + a ;
+
+//     // a = a + b ;
+//     // b = a - b ;
+//     // a = a - b ;
+
+//     b = a + b;
+//     a = b - a ;
+//     b = b - a ;
+//     cout<<"After the swapping a - "<<a<<" and b - "<<b<<endl ;
+//     return 0 ;
+// }
+
+// int solve(vector<int>& coins, int amount) {
+//     if (amount == 0) return 0; // base case
+//     if (amount < 0) return INT_MAX; // not possible
+
+//     int mini = INT_MAX;
+
+//     for (int coin : coins) {
+//         int ans = solve(coins, amount - coin);
+//         if (ans != INT_MAX) {
+//             mini = min(mini, 1 + ans); // 1 coin used + remaining answer
+//         }
+//     }
+
+//     return mini;
+// }
+
+
+// #include <iostream>
+// #include <vector>
+// #include <climits> // For INT_MAX
+// using namespace std;
+
+// // Recursive function with memoization to find minimum coins
+// int solve(const vector<int>& coins, int amount, vector<int>& dp) {
+//     if (amount == 0) return 0; // base case
+//     if (amount < 0) return INT_MAX; // not possible
+  
+//     if(dp[amount] != -1) return dp[amount] ;
+
+//     int mini = INT_MAX ;
+
+//     for(int coin : coins){
+//         int ans = solve(coins,amount-coin , dp);
+//         if(ans != INT_MAX){
+//             mini = min(mini,1+ans) ;
+//         }
+//     }
+
+//     dp[amount] = mini ;
+//     return mini ;
+
+// }
+
+// int rob(vector<int>& nums) {
+//     int prev1 = 0, prev2 = 0;
+//     for (int i = 0; i < nums.size(); i++) {
+//         int pick = nums[i] + prev2;
+//         int notPick = prev1;
+//         int curr = max(pick, notPick);
+//         prev2 = prev1;
+//         prev1 = curr;
+//     }
+//     return prev1;
+// }
+
+
+// int fib(int n) {
+//     if (n <= 1) return n;
+//     return fib(n-1) + fib(n-2);
+// }
+
+// int fibTab(int n) {
+//     vector<int> dp(n+1, 0);
+//     dp[0] = 0;
+//     dp[1] = 1;
+
+//     for (int i = 2; i <= n; i++) {
+//         dp[i] = dp[i-1] + dp[i-2];
+//     }
+//     return dp[n];
+// }
+
+
+// int fibOptimized(int n) {
+//     int prev2 = 0, prev1 = 1;
+//     for (int i = 2; i <= n; i++) {
+//         int curr = prev1 + prev2;
+//         prev2 = prev1;
+//         prev1 = curr;
+//     }
+//     return prev1;
+// }
+
+
+// int fibMemo(int n, vector<int> &dp) {
+//     if (n <= 1) return n;
+
+//     if (dp[n] != -1) return dp[n]; // already solved
+
+//     dp[n] = fibMemo(n-1, dp) + fibMemo(n-2, dp);
+//     return dp[n];
+// }
+
+// class Solution {
+// public:
+//     int numWays(int n, int k) { // n = 3 k = 2 
+//         if (n == 0) return 0;
+//         if (n == 1) return k;
+
+//         int same = 0;           // ways to paint post 1 same as previous (none)
+//         int diff = k;           // ways to paint post 1 differently (any of k colors)
+
+//         for (int i = 2; i <= n; i++) {
+                        
+//             int tempDiff = (k - 1) * (same + diff);// 1 = 4 , 2 = 12
+//             same = diff;// 1 = 2 , 2 = 4
+//             diff = tempDiff;// 2 = 4 , 2 = 12
+
+//         }
+
+//         return same + diff;
+//     }
+// };
+
+
+
+// int main() {
+//     // vector<int> coins = {1, 3, 4};
+//     // int amount = 6;
+//     vector<int> coins = {1, 2};
+//     int amount = 2  ;
+
+//     // Initialize DP array with -1 (uncomputed)
+//     vector<int> dp(amount + 1, -1);
+    
+//     int minCoins = solve(coins, amount, dp);
+//     if (minCoins == INT_MAX) {
+//         cout << "No solution possible to make amount " << amount << endl;
+//     } else {
+//         cout << "Minimum coins required to make amount " << amount << " is: " << minCoins << endl;
+//     }
+    
+//     return 0;
+// }
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// 1. Pure Recursion (Exponential time)
+// Only use for very small `n` due to exponential complexity
+int paintFenceRec(int n, int k) {
+    if (n == 0) return 0;
+    if (n == 1) return k;
+    if (n == 2) return k * k;
+
+    int same = paintFenceRec(n - 2, k) * (k - 1);
+    int diff = paintFenceRec(n - 1, k) * (k - 1);
+
+    return same + diff;
+}
+
+// 2. Memoization (Top-Down DP)
+int paintFenceMemoHelper(int n, int k, vector<int>& dp) {
+    if (n == 0) return 0;
+    if (n == 1) return k;
+    if (n == 2) return k * k;
+
+    if (dp[n] != -1) return dp[n];
+
+    int same = paintFenceMemoHelper(n - 2, k, dp) * (k - 1);
+    int diff = paintFenceMemoHelper(n - 1, k, dp) * (k - 1);
+
+    dp[n] = same + diff;
+    return dp[n];
+}
+
+int paintFenceMemo(int n, int k) {
+    vector<int> dp(n + 1, -1);
+    return paintFenceMemoHelper(n, k, dp);
+}
+
+// 3. Tabulation (Bottom-Up DP)
+int paintFenceTab(int n, int k) {
+    if (n == 0) return 0;
+    if (n == 1) return k;
+
+    vector<int> dp(n + 1);
+    dp[1] = k;
+    dp[2] = k * k;
+
+    for (int i = 3; i <= n; i++) {
+        int same = dp[i - 2] * (k - 1);
+        int diff = dp[i - 1] * (k - 1);
+        dp[i] = same + diff;
+    }
+    return dp[n];
+}
+
+// 4. Space Optimized DP (Optional)
+// Just for completeness, not requested to combine but shown below.
+int paintFenceSpaceOptimized(int n, int k) {
+    if (n == 0) return 0;
+    if (n == 1) return k;
+
+    int twoBack = k;
+    int oneBack = k * k;
+
+    for (int i = 3; i <= n; i++) {
+        int same = twoBack * (k - 1);
+        int diff = oneBack * (k - 1);
+        int curr = same + diff;
+
+        twoBack = oneBack;
+        oneBack = curr;
+    }
+    return oneBack;
+}
+
+
+int solveTabSpaceOptimized(int capacity, vector<int> &val, vector<int> &weight, int n) {
+    vector<int> dp(capacity + 1, 0);
+
+    // Base case: initialize dp for the first item
+    for (int w = weight[0]; w <= capacity; w++) {
+        dp[w] = val[0];
+    }
+
+    // Process rest of the items
+    for (int index = 1; index < n; index++) {
+        // Iterate capacity backwards to not override values of this iteration
+        for (int w = capacity; w >= 0; w--) {
+            int incl = 0;
+            if (weight[index] <= w) {
+                incl = val[index] + dp[w - weight[index]];
+            }
+            int excl = dp[w];
+
+            dp[w] = max(incl, excl);
+        }
+    }
+
+    return dp[capacity];
+}
+
+int main() {
+    int n = 3, k = 2;
+
+    cout << "Recursion result: " << paintFenceRec(n, k) << endl;
+    cout << "Memoization result: " << paintFenceMemo(n, k) << endl;
+    cout << "Tabulation result: " << paintFenceTab(n, k) << endl;
+    cout << "Space Optimized DP result: " << paintFenceSpaceOptimized(n, k) << endl;
+
+    return 0;
+}
+
 
